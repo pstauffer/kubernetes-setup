@@ -1,0 +1,13 @@
+---
+- name: check if already joined
+  stat:
+    path: /etc/kubernetes/kubelet.conf
+  ignore_errors: true
+  register: join_state
+
+- name: print join_state
+  debug:
+    msg: '{{ join_state.stat.exists }}'
+
+- include: join.yml
+  when: join_state.stat.exists != true

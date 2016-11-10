@@ -1,0 +1,9 @@
+---
+- name: set master ip as fact
+  set_fact:
+    kubemaster_ip: '{{ groups["master"][0] }}'
+
+- name: print master
+  debug:
+    msg: '{{ kubemaster_ip }}'
+  run_once: true

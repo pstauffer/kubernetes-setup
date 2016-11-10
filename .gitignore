@@ -1,0 +1,4 @@
+sshkey.pem
+inventories/*
+!inventories/sample
+*/*.retry

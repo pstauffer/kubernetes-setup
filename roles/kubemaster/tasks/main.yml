@@ -1,0 +1,19 @@
+---
+- name: check if already initialised
+  stat:
+    path: /etc/kubernetes/admin.conf
+  ignore_errors: true
+  register: initialise_state
+
+- name: print initialise_state
+  debug:
+    msg: '{{ initialise_state.stat.exists }}'
+
+- include: initialise.yml
+  when: initialise_state.stat.exists != true
+
+- include: kubemaster_and_minion.yml
+  when: initialise_state.stat.exists != true
+
+- name: install plugins
+  include: plugins.yml

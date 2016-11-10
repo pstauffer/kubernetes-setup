@@ -1,0 +1,8 @@
+---
+- name: initialise master
+  command: 'kubeadm init --api-advertise-addresses={{ kubemaster_ip }} --token={{ kubemaster_token }}'
+  register: initialise_output
+
+- name: print initialise_output
+  debug:
+    msg: '{{ initialise_output }}'

@@ -1,0 +1,5 @@
+---
+- hosts: minions
+
+  roles:
+    - kubeminion

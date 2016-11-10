@@ -1,0 +1,3 @@
+---
+- name: join kubemaster
+  command: 'kubeadm join --token={{ kubemaster_token }} {{ kubemaster_ip }}'

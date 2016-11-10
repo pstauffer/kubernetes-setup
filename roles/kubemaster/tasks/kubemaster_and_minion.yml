@@ -1,0 +1,4 @@
+---
+- name: master can also be a minion
+  command: kubectl taint nodes --all dedicated-
+  when: kubemaster_and_minion

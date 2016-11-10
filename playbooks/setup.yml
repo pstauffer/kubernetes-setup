@@ -1,0 +1,4 @@
+---
+- include: python.yml
+- include: master.yml
+- include: minions.yml 

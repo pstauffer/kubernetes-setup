@@ -1,0 +1,5 @@
+---
+- name: 'install kubemaster plugins {{ kubemaster_plugins }}'
+  command: 'kubectl apply -f {{ item }}'
+  with_items: '{{ kubemaster_plugins }}'
+  changed_when: false

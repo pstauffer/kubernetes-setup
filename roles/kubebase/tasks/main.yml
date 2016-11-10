@@ -1,0 +1,25 @@
+---
+- name: include kubemaster ip
+  include: ip.yml
+
+- name: install apt key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    id: A7317B0F
+    state: present
+
+- name: install apt repo
+  apt_repository:
+    repo: 'deb http://apt.kubernetes.io/ kubernetes-xenial main'
+    state: present
+
+- name: update apt cache
+  apt:
+    update_cache: yes
+  changed_when: false
+
+- name: install packages
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ kubebase_packages }}'

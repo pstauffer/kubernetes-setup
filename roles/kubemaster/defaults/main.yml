@@ -1,0 +1,5 @@
+---
+kubemaster_and_minion: true
+
+kubemaster_plugins:
+  - https://git.io/weave-kube
