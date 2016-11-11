@@ -1,0 +1,4 @@
+---
+kubebase_apt_id: A7317B0F
+kubebase_apt_key_url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+kubebase_apt_repo: 'deb http://apt.kubernetes.io/ kubernetes-xenial main'

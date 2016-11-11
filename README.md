@@ -1,8 +1,11 @@
 # kubernetes-setup
 
+[![Build Status](https://travis-ci.org/pstauffer/kubernetes-setup.png?branch=master)](https://travis-ci.org/pstauffer/kubernetes-setup)
+
+
 ## Description
 This Ansible project will install a kubernetes master and some minions.
-
+The installation has been tested on **Ubuntu 16.04** in the [AWS Cloud](https://aws.amazon.com).
 
 ### Roles
 * [kubebase](roles/kubebase) -> Install docker and kubernetes
@@ -15,6 +18,10 @@ This Ansible project will install a kubernetes master and some minions.
 * [minion.yml](playbooks/minion.yml) -> Install all minions
 * [setup.yml](playbooks/setup.yml) -> Install the whole kubernetes infrastructure
 
+
+## Requirements
+* Ansible 2.x
+* Ubuntu 16.04
 
 ## Configuration
 
@@ -45,16 +52,19 @@ ansible_ssh_private_key_file = sshkey.pem
 ansible_user = ubuntu
 ```
 
-## Installation
+## Usage
 ```
 # example with cluster1 inventory file
 ansible-playbook -i inventories/cluster1 playbooks/setup.yml
 ```
 
+## Disclaimer
+* works only on **Ubuntu 16.04**
+* all tasks run as `root`, `become = True` is set in [ansible.cfg](ansible.cfg)
+* some Ansible tasks are marked with `changed_when: false`. Sorry for that ;-)
 
-## Hints
-* some Ansible tasks are marked with `changed_when: false`. I know, it's not the best solution :-)
-
+## License
+[MIT](LICENSE)
 
 ## Author
 * Pascal Stauffer

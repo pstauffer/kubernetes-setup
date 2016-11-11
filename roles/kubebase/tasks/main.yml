@@ -4,13 +4,13 @@
 
 - name: install apt key
   apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    id: A7317B0F
+    url: '{{ kubebase_apt_key_url }}'
+    id: '{{ kubebase_apt_id }}'
     state: present
 
 - name: install apt repo
   apt_repository:
-    repo: 'deb http://apt.kubernetes.io/ kubernetes-xenial main'
+    repo: '{{ kubebase_apt_repo }}'
     state: present
 
 - name: update apt cache
