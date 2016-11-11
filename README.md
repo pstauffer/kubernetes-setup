@@ -2,7 +2,7 @@
 
 ## Description
 This Ansible project will install a kubernetes master and some minions.
-
+The installation has been tested on **Ubuntu 16.04** in the [AWS Cloud](https://aws.amazon.com).
 
 ### Roles
 * [kubebase](roles/kubebase) -> Install docker and kubernetes
@@ -14,7 +14,6 @@ This Ansible project will install a kubernetes master and some minions.
 * [master.yml](playbooks/master.yml) -> Install the kubernetes master
 * [minion.yml](playbooks/minion.yml) -> Install all minions
 * [setup.yml](playbooks/setup.yml) -> Install the whole kubernetes infrastructure
-
 
 ## Configuration
 
@@ -51,9 +50,10 @@ ansible_user = ubuntu
 ansible-playbook -i inventories/cluster1 playbooks/setup.yml
 ```
 
-
-## Hints
-* some Ansible tasks are marked with `changed_when: false`. I know, it's not the best solution :-)
+## Disclaimer
+* works only on **Ubuntu 16.04**
+* all tasks run as `root`, `become = True` is set in [ansible.cfg](ansible.cfg)
+* some Ansible tasks are marked with `changed_when: false`. Sorry for that ;-)
 
 
 ## Author
