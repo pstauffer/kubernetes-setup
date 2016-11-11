@@ -4,7 +4,7 @@
 
 
 ## Description
-This Ansible project will install a kubernetes master and some minions.
+This Ansible project will install a kubernetes master and some minions, based on the [getting started Guide](http://kubernetes.io/docs/getting-started-guides/kubeadm/).
 The installation has been tested on **Ubuntu 16.04** in the [AWS Cloud](https://aws.amazon.com).
 
 ### Roles
