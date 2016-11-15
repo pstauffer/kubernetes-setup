@@ -21,7 +21,7 @@ The installation has been tested on **Ubuntu 16.04** in the [AWS Cloud](https://
 
 ## Requirements
 * Ansible 2.x
-* Ubuntu 16.04
+* Ubuntu 16.04 or CentOS 7
 
 ## Configuration
 
