@@ -2,24 +2,19 @@
 - name: include kubemaster ip
   include: ip.yml
 
-- name: install apt key
-  apt_key:
-    url: '{{ kubebase_apt_key_url }}'
-    id: '{{ kubebase_apt_id }}'
-    state: present
+- name: load centos part
+  include: centos.yml
+  when: ansible_os_family == "RedHat"
 
-- name: install apt repo
-  apt_repository:
-    repo: '{{ kubebase_apt_repo }}'
-    state: present
+- name: load ubuntu part
+  include: ubuntu.yml
+  when: ansible_os_family == "Debian"
 
-- name: update apt cache
-  apt:
-    update_cache: yes
-  changed_when: false
-
-- name: install packages
-  apt:
+- name: activate and enable services
+  service:
     name: '{{ item }}'
-    state: present
-  with_items: '{{ kubebase_packages }}'
+    state: started
+    enabled: yes
+  with_items:
+    - docker
+    - kubelet

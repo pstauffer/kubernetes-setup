@@ -1,4 +1,9 @@
 ---
-- include: python.yml
+- include: python_ubuntu.yml
+  when: install_python_ubuntu
+
+- include: python_centos.yml
+  when: install_python_centos
+
 - include: master.yml
 - include: minions.yml 

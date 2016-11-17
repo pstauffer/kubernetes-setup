@@ -1,0 +1,22 @@
+---
+- name: install apt key
+  apt_key:
+    url: '{{ kubebase_apt_key_url }}'
+    id: '{{ kubebase_apt_id }}'
+    state: present
+
+- name: install apt repo
+  apt_repository:
+    repo: '{{ kubebase_apt_repo }}'
+    state: present
+
+- name: update apt cache
+  apt:
+    update_cache: yes
+  changed_when: false
+
+- name: install packages
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ kubebase_packages }}'

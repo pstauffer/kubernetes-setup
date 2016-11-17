@@ -1,0 +1,27 @@
+---
+- name: add kubernetes repo
+  yum_repository:
+    name: Kubernetes
+    description: Kubernetes YUM repo
+    file: kubernetes_repo
+    baseurl: http://yum.kubernetes.io/repos/kubernetes-el7-x86_64
+    gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    gpgcheck: yes
+    enabled: yes
+
+- name: deactivate selinux
+  selinux:
+    state: disabled
+  changed_when: false # bug
+
+- name: install kubernetes packages
+  yum:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - docker-1.10.3-46.el7.centos.14.x86_64
+    - kubelet-1.4.4-1.x86_64
+    - kubeadm-1.5.0-1.alpha.2.380.85fe0f1aadf91e.0.x86_64
+    - kubectl-1.4.4-1.x86_64
+    - kubernetes-cni-0.3.0.1-1.07a8a2.x86_64
+    - ebtables
