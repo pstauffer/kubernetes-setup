@@ -19,4 +19,4 @@
   apt:
     name: '{{ item }}'
     state: present
-  with_items: '{{ kubebase_packages }}'
+  with_items: '{{ kubebase_packages_ubuntu }}'
