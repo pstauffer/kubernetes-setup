@@ -7,9 +7,8 @@ kubebase_packages_ubuntu:
   - kubernetes-cni=0.3.0.1-07a8a2-00
 
 kubebase_packages_centos:
-  - docker-1.10.3-46.el7.centos.14.x86_64
-  - kubelet-1.4.4-1.x86_64
-  - kubeadm-1.5.0-1.alpha.2.380.85fe0f1aadf91e.0.x86_64
-  - kubectl-1.4.4-1.x86_64
-  - kubernetes-cni-0.3.0.1-1.07a8a2.x86_64
-  - ebtables
+  - docker
+  - kubelet
+  - kubeadm
+  - kubectl
+  - kubernetes-cni

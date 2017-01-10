@@ -1,4 +1,8 @@
 ---
+- name: load centos 7.1 and 7.2 variables
+  include_vars: centos7_12.yml
+  when: ansible_distribution_version == "7.1" or ansible_distribution_version == "7.2"
+
 - name: add kubernetes repo
   yum_repository:
     name: Kubernetes
@@ -18,4 +22,6 @@
   yum:
     name: '{{ item }}'
     state: present
-  with_items: '{{ kubebase_packages_centos }}'
+  with_items:
+    -  '{{ kubebase_packages_centos }}'
+    - ebtables
